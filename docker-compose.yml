@@ -1,0 +1,25 @@
+# docker-compose.yml — ambiente de desenvolvimento
+# Sobe apenas o PostgreSQL; Next.js roda localmente com `npm run dev`
+# Uso: docker-compose up -d
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: prime-review-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: primereview
+      POSTGRES_PASSWORD: primereview123
+      POSTGRES_DB: primereview
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U primereview"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
