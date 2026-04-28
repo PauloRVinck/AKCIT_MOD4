@@ -102,11 +102,35 @@ Acesse [http://localhost:3000](http://localhost:3000).
 
 ---
 
+## Testes
+
+O projeto utiliza [Vitest](https://vitest.dev/) para testes unitários. Os testes cobrem as camadas de lógica pura — utilitários e schemas de validação — que não dependem de banco de dados ou chamadas externas.
+
+### Executar os testes
+
+```bash
+npm test              # Executa todos os testes uma vez
+npm run test:watch    # Modo interativo (re-executa ao salvar)
+```
+
+### Cobertura atual
+
+| Arquivo | O que é testado |
+|---|---|
+| `lib/utils/format.ts` | Formatação de datas, tipos, status e iniciais |
+| `lib/validations/user.schema.ts` | Registro, login, atualização de perfil e senha |
+| `lib/validations/content.schema.ts` | Criação, atualização parcial e filtros de conteúdo |
+| `lib/validations/review.schema.ts` | Nota, corpo da review e flag de spoiler |
+
+---
+
 ## Scripts disponíveis
 
 ```bash
 npm run dev              # Servidor de desenvolvimento
 npm run build            # Build de produção
+npm test                 # Executa os testes unitários
+npm run test:watch       # Testes em modo interativo
 npm run db:migrate       # Executa as migrations
 npm run db:seed          # Popula o banco com dados iniciais
 npm run db:studio        # Abre o Prisma Studio
