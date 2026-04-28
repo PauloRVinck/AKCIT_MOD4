@@ -1,0 +1,103 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Enums ────────────────────────────────────────────────
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum ContentType {
+  MOVIE
+  SERIES
+}
+
+enum ContentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum WatchStatus {
+  WATCHING
+  WATCHED
+  WANT_TO_WATCH
+  DROPPED
+}
+
+// ─── Models ───────────────────────────────────────────────
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  avatarUrl String?
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  submittedContents Content[]     @relation("SubmittedContents")
+  approvedContents  Content[]     @relation("ApprovedContents")
+  reviews           Review[]
+  userContents      UserContent[]
+}
+
+model Content {
+  id            String        @id @default(uuid())
+  title         String
+  type          ContentType
+  tmdbId        Int?
+  synopsis      String        @db.Text
+  posterUrl     String?
+  releaseYear   Int?
+  genres        String[]
+  status        ContentStatus @default(PENDING)
+  submittedById String
+  approvedById  String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  submittedBy  User          @relation("SubmittedContents", fields: [submittedById], references: [id])
+  approvedBy   User?         @relation("ApprovedContents", fields: [approvedById], references: [id])
+  reviews      Review[]
+  userContents UserContent[]
+}
+
+model Review {
+  id         String   @id @default(uuid())
+  userId     String
+  contentId  String
+  rating     Int
+  body       String?  @db.Text
+  hasSpoiler Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  content Content @relation(fields: [contentId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, contentId])
+}
+
+model UserContent {
+  id        String      @id @default(uuid())
+  userId    String
+  contentId String
+  status    WatchStatus
+  addedAt   DateTime    @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  content Content @relation(fields: [contentId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, contentId])
+}
