@@ -169,7 +169,6 @@ A IA auxiliou na identificação de inconsistências, sugestões de refatoraçã
 **Controle de versão**
 As mensagens de commit seguem o padrão [Conventional Commits](https://www.conventionalcommits.org/), geradas com auxílio da IA a partir das alterações realizadas em cada etapa — tornando o histórico do repositório legível e rastreável.
 
-> O uso da IA não substituiu o entendimento técnico, mas amplificou a capacidade de entrega ao reduzir o tempo gasto em tarefas repetitivas e acelerar a tomada de decisões de design.
 
 ---
 
