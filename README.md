@@ -1,6 +1,9 @@
 # Prime Review
 
 Plataforma web para avaliação e acompanhamento de filmes e séries, desenvolvida com Next.js 14, TypeScript e PostgreSQL. O projeto permite que usuários registrem o que estão assistindo, escrevam avaliações e descubram conteúdos avaliados pela comunidade.
+<img width="1901" height="876" alt="primereview" src="https://github.com/user-attachments/assets/35e488c5-89fa-4a3b-82e2-e1459cd77510" />
+
+
 
 ---
 
