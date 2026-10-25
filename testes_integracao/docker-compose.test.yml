@@ -1,0 +1,36 @@
+# testes_integracao/docker-compose.test.yml — banco descartável + runner da suíte de integração
+# Uso: npm run test:integration [-- <filtro de caminho>]
+#      npm run test:integration:down
+
+services:
+  db-test:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: primereview_test
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U test -d primereview_test"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+  tests:
+    image: node:20-alpine
+    working_dir: /app
+    entrypoint: ["sh", "testes_integracao/run.sh"]
+    environment:
+      DATABASE_URL: postgresql://test:test@db-test:5432/primereview_test
+      NODE_ENV: test
+    volumes:
+      - ..:/app
+      # node_modules do host (Windows) não serve no Linux do container
+      - node_modules_tests:/app/node_modules
+    depends_on:
+      db-test:
+        condition: service_healthy
+
+volumes:
+  node_modules_tests:

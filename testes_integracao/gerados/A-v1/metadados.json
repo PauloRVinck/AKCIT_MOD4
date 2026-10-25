@@ -1,0 +1,12 @@
+{
+  "run": "A-v1",
+  "prompt": "A-contrato-v1",
+  "modelo": "claude-haiku-5-5",
+  "plataforma": "Claude Code CLI (modo -p, --safe-mode, sem ferramentas)",
+  "executadoEm": "2026-10-25T15:35:20.153Z",
+  "duracaoMs": 95629,
+  "tokensEntrada": 3294,
+  "tokensSaida": 25916,
+  "custoUsd": 0.013973300000000001,
+  "sessionId": "6ad297cd-9cdb-4961-b90a-979a69f33158"
+}

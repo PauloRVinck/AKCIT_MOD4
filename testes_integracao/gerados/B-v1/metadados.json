@@ -1,0 +1,12 @@
+{
+  "run": "B-v1",
+  "prompt": "B-fluxo-codigo-v1",
+  "modelo": "claude-haiku-5-5",
+  "plataforma": "Claude Code CLI (modo -p, --safe-mode, sem ferramentas)",
+  "executadoEm": "2026-10-25T15:35:20.168Z",
+  "duracaoMs": 76933,
+  "tokensEntrada": 6979,
+  "tokensSaida": 22520,
+  "custoUsd": 0.0133822,
+  "sessionId": "65334d97-d660-435a-882e-6eaff170b42d"
+}

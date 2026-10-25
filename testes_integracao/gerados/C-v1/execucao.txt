@@ -1,0 +1,516 @@
+ RUN  v4.1.5 /app
+      Coverage enabled with v8
+
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts (50 tests | 48 failed) 223ms
+     ✓ sem sessão responde 401 e não chama o TMDB 39ms
+     × sem parâmetro q responde 400 e não chama o TMDB 26ms
+     × q com um caractere responde 400 e não chama o TMDB 2ms
+     × q com somente espaços responde 400 e não chama o TMDB 1ms
+     × q com um caractere cercado de espaços responde 400 e não chama o TMDB 1ms
+     × q com exatamente dois caracteres é aceito (limite inferior) 1ms
+     × URL e parâmetros exatos enviados ao TMDB 2ms
+     × codifica corretamente caracteres especiais e remove espaços das pontas 3ms
+     × mantém apenas filmes e séries, descartando pessoas e coleções 4ms
+     × mapeia filme e série completos para o formato interno 2ms
+     × resultado vazio responde 200 com lista vazia 2ms
+     × payload sem a chave results responde 200 com lista vazia 4ms
+     × somente pessoas nos resultados responde 200 com lista vazia 7ms
+     × campos opcionais ausentes viram null, string vazia ou lista vazia 3ms
+     × release_date vazia cai para null mesmo com first_air_date ausente 2ms
+     × série sem first_air_date usa release_date quando presente e null quando ausente 1ms
+     × gênero desconhecido vira 'Outro' e gêneros conhecidos são preservados 9ms
+     × retorna no máximo 10 itens, mesmo com mais resultados do TMDB 4ms
+     × o limite de 10 é aplicado depois de filtrar pessoas e coleções 2ms
+     × com as variáveis de ambiente alternativas, usa o host e a chave configurados 5ms
+     × status HTTP 400 do TMDB responde 502 TMDB_ERROR 1ms
+     × status HTTP 401 do TMDB responde 502 TMDB_ERROR 7ms
+     × status HTTP 404 do TMDB responde 502 TMDB_ERROR 1ms
+     × status HTTP 429 do TMDB responde 502 TMDB_ERROR 1ms
+     × status HTTP 500 do TMDB responde 502 TMDB_ERROR 1ms
+     × status HTTP 503 do TMDB responde 502 TMDB_ERROR 2ms
+     × falha de rede (fetch rejeitado) responde 502 TMDB_ERROR 2ms
+     × sem TMDB_API_KEY não chama o TMDB e responde 502 TMDB_ERROR 7ms
+     ✓ sem sessão responde 401 e não chama o TMDB 6ms
+     × tmdbId com texto responde 400 e não chama o TMDB 2ms
+     × tmdbId com número seguido de letras responde 400 e não chama o TMDB 1ms
+     × tmdbId com letras seguidas de número responde 400 e não chama o TMDB 1ms
+     × filme: URL e parâmetros exatos enviados ao TMDB 1ms
+     × série: usa o caminho /tv/{id} quando type=tv 1ms
+     × sem parâmetro type cai no caminho /movie/{id} 2ms
+     × type=movie cai no caminho /movie/{id} 4ms
+     × type desconhecido cai no caminho /movie/{id} 4ms
+     × type vazio cai no caminho /movie/{id} 3ms
+     × filme completo é mapeado para o formato interno 2ms
+     × série completa usa name e first_air_date e tipo SERIES 2ms
+     × campos opcionais ausentes viram null, string vazia ou lista vazia 1ms
+     × série sem first_air_date responde releaseYear null 2ms
+     × com TMDB_BASE_URL alternativa, usa o host configurado 11ms
+     × status HTTP 401 do TMDB responde 404 NOT_FOUND (getTmdbById devolve null) 2ms
+     × status HTTP 404 do TMDB responde 404 NOT_FOUND (getTmdbById devolve null) 2ms
+     × status HTTP 429 do TMDB responde 404 NOT_FOUND (getTmdbById devolve null) 2ms
+     × status HTTP 500 do TMDB responde 404 NOT_FOUND (getTmdbById devolve null) 9ms
+     × status HTTP 503 do TMDB responde 404 NOT_FOUND (getTmdbById devolve null) 3ms
+     × falha de rede (fetch rejeitado) responde 502 TMDB_ERROR 3ms
+     × sem TMDB_API_KEY não chama o TMDB e responde 502 TMDB_ERROR 7ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 48 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — autenticação e validação > sem parâmetro q responde 400 e não chama o TMDB
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:166:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — autenticação e validação > q com um caractere responde 400 e não chama o TMDB
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — autenticação e validação > q com somente espaços responde 400 e não chama o TMDB
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — autenticação e validação > q com um caractere cercado de espaços responde 400 e não chama o TMDB
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:182:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — autenticação e validação > q com exatamente dois caracteres é aceito (limite inferior)
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:194:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — sucesso e transformação > URL e parâmetros exatos enviados ao TMDB
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:211:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — sucesso e transformação > codifica corretamente caracteres especiais e remove espaços das pontas
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:227:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — sucesso e transformação > mantém apenas filmes e séries, descartando pessoas e coleções
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:240:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — sucesso e transformação > mapeia filme e série completos para o formato interno
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:256:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — sucesso e transformação > resultado vazio responde 200 com lista vazia
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:285:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — sucesso e transformação > payload sem a chave results responde 200 com lista vazia
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:296:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — sucesso e transformação > somente pessoas nos resultados responde 200 com lista vazia
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:307:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — sucesso e transformação > campos opcionais ausentes viram null, string vazia ou lista vazia
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:318:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — sucesso e transformação > release_date vazia cai para null mesmo com first_air_date ausente
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:346:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — sucesso e transformação > série sem first_air_date usa release_date quando presente e null quando ausente
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:358:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — sucesso e transformação > gênero desconhecido vira 'Outro' e gêneros conhecidos são preservados
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:372:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — sucesso e transformação > retorna no máximo 10 itens, mesmo com mais resultados do TMDB
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:389:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — sucesso e transformação > o limite de 10 é aplicado depois de filtrar pessoas e coleções
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:405:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — sucesso e transformação > com as variáveis de ambiente alternativas, usa o host e a chave configurados
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:430:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — falhas do TMDB > status HTTP 400 do TMDB responde 502 TMDB_ERROR
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — falhas do TMDB > status HTTP 401 do TMDB responde 502 TMDB_ERROR
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — falhas do TMDB > status HTTP 404 do TMDB responde 502 TMDB_ERROR
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — falhas do TMDB > status HTTP 429 do TMDB responde 502 TMDB_ERROR
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — falhas do TMDB > status HTTP 500 do TMDB responde 502 TMDB_ERROR
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — falhas do TMDB > status HTTP 503 do TMDB responde 502 TMDB_ERROR
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:451:13
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — falhas do TMDB > falha de rede (fetch rejeitado) responde 502 TMDB_ERROR
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:463:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/search — falhas do TMDB > sem TMDB_API_KEY não chama o TMDB e responde 502 TMDB_ERROR
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:478:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — autenticação e validação > tmdbId com texto responde 400 e não chama o TMDB
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — autenticação e validação > tmdbId com número seguido de letras responde 400 e não chama o TMDB
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — autenticação e validação > tmdbId com letras seguidas de número responde 400 e não chama o TMDB
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:514:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — URL e sucesso > filme: URL e parâmetros exatos enviados ao TMDB
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:535:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — URL e sucesso > série: usa o caminho /tv/{id} quando type=tv
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:550:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — URL e sucesso > sem parâmetro type cai no caminho /movie/{id}
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — URL e sucesso > type=movie cai no caminho /movie/{id}
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — URL e sucesso > type desconhecido cai no caminho /movie/{id}
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — URL e sucesso > type vazio cai no caminho /movie/{id}
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:567:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — URL e sucesso > filme completo é mapeado para o formato interno
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:577:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — URL e sucesso > série completa usa name e first_air_date e tipo SERIES
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:599:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[26/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — URL e sucesso > campos opcionais ausentes viram null, string vazia ou lista vazia
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:621:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[27/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — URL e sucesso > série sem first_air_date responde releaseYear null
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:639:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[28/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — URL e sucesso > com TMDB_BASE_URL alternativa, usa o host configurado
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:655:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[29/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — falhas do TMDB > status HTTP 401 do TMDB responde 404 NOT_FOUND (getTmdbById devolve null)
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — falhas do TMDB > status HTTP 404 do TMDB responde 404 NOT_FOUND (getTmdbById devolve null)
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — falhas do TMDB > status HTTP 429 do TMDB responde 404 NOT_FOUND (getTmdbById devolve null)
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — falhas do TMDB > status HTTP 500 do TMDB responde 404 NOT_FOUND (getTmdbById devolve null)
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — falhas do TMDB > status HTTP 503 do TMDB responde 404 NOT_FOUND (getTmdbById devolve null)
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:674:13
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[30/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — falhas do TMDB > falha de rede (fetch rejeitado) responde 502 TMDB_ERROR
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:689:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[31/48]⎯
+
+ FAIL  testes_integracao/gerados/C-v1/tmdb-falhas.test.ts > GET /api/tmdb/[tmdbId] — falhas do TMDB > sem TMDB_API_KEY não chama o TMDB e responde 502 TMDB_ERROR
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ logarComo testes_integracao/helpers/sessao.ts:15:33
+     13|
+     14| export function logarComo(usuario: UsuarioSessao) {
+     15|   atual = { user: { id: usuario.id, name: usuario.name, email: usuario…
+       |                                 ^
+     16| }
+     17|
+ ❯ testes_integracao/gerados/C-v1/tmdb-falhas.test.ts:706:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[32/48]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  48 failed | 2 passed (50)
+   Start at  15:41:31
+   Duration  8.19s (transform 1.89s, setup 654ms, import 1.84s, tests 223ms, environment 0ms)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |      10 |      4.8 |   11.76 |   10.09 |                   
+ app/api/contents  |       0 |        0 |       0 |       0 |                   
+  route.ts         |       0 |        0 |       0 |       0 | 10-88             
+ ...s/[id]/approve |       0 |        0 |       0 |       0 |                   
+  route.ts         |       0 |        0 |       0 |       0 | 8-24              
+ ...ts/[id]/reject |       0 |        0 |       0 |       0 |                   
+  route.ts         |       0 |        0 |       0 |       0 | 8-24              
+ ...s/[id]/reviews |       0 |        0 |       0 |       0 |                   
+  route.ts         |       0 |        0 |       0 |       0 | 9-79              
+ .../tmdb/[tmdbId] |   33.33 |     12.5 |     100 |   33.33 |                   
+  route.ts         |   33.33 |     12.5 |     100 |   33.33 | 11-15,19-23       
+ ...pi/tmdb/search |   33.33 |       50 |     100 |   27.27 |                   
+  route.ts         |   33.33 |       50 |     100 |   27.27 | 11-12,15-23       
+ lib               |      16 |     2.08 |       0 |      20 |                   
+  tmdb.ts          |      16 |     2.08 |       0 |      20 | 49-113            
+-------------------|---------|----------|---------|---------|-------------------
+

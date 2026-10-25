@@ -1,0 +1,233 @@
+ RUN  v4.1.5 /app
+      Coverage enabled with v8
+
+stdout | testes_integracao/gerados/A-v1/fluxo-contrato.test.ts > GET /api/contents/{id}/reviews — listar > paginação: página 1 com 10 itens; página 2 com o 11º
+prisma:error 
+Invalid `prisma.user.create()` invocation in
+/app/testes_integracao/gerados/A-v1/fluxo-contrato.test.ts:125:37
+
+  122 ): Promise<UserId[]> {
+  123   const ids: UserId[] = [];
+  124   for (let i = 0; i < quantidade; i++) {
+→ 125     const extra = await prisma.user.create({
+            data: {
+              email: "semeado0@teste.com",
+              name: "Semeado 0",
+              role: "USER",
+          +   password: String
+            }
+          })
+
+Argument `password` is missing.
+
+stdout | testes_integracao/gerados/A-v1/fluxo-contrato.test.ts > GET /api/contents/{id}/reviews — listar > ordena das mais recentes para as mais antigas
+prisma:error 
+Invalid `prisma.user.create()` invocation in
+/app/testes_integracao/gerados/A-v1/fluxo-contrato.test.ts:125:37
+
+  122 ): Promise<UserId[]> {
+  123   const ids: UserId[] = [];
+  124   for (let i = 0; i < quantidade; i++) {
+→ 125     const extra = await prisma.user.create({
+            data: {
+              email: "semeado0@teste.com",
+              name: "Semeado 0",
+              role: "USER",
+          +   password: String
+            }
+          })
+
+Argument `password` is missing.
+
+ ❯ testes_integracao/gerados/A-v1/fluxo-contrato.test.ts (81 tests | 3 failed) 677ms
+     ✓ 401 sem sessão e nada é persistido 62ms
+     ✓ 201 para USER: conteúdo nasce PENDING e registra o autor 14ms
+     ✓ 201 para ADMIN: qualquer papel autenticado pode sugerir 8ms
+     ✓ title: 0 caracteres (abaixo do mínimo) → NaN 5ms
+     ✓ title: 1 caractere (mínimo) → NaN 7ms
+     ✓ title: 255 caracteres (máximo) → NaN 9ms
+     ✓ title: 256 caracteres (acima do máximo) → NaN 4ms
+     ✓ title: ausente → NaN 4ms
+     ✓ type: MOVIE → NaN 5ms
+     ✓ type: SERIES → NaN 5ms
+     ✓ type: fora do domínio → NaN 4ms
+     ✓ type: ausente → NaN 4ms
+     ✓ synopsis: 9 caracteres (abaixo do mínimo) → NaN 4ms
+     ✓ synopsis: 10 caracteres (mínimo) → NaN 9ms
+     ✓ synopsis: 5000 caracteres (máximo) → NaN 6ms
+     ✓ synopsis: 5001 caracteres (acima do máximo) → NaN 4ms
+     ✓ synopsis: ausente → NaN 4ms
+     ✓ genres: array vazio → NaN 4ms
+     ✓ genres: string vazia → NaN 3ms
+     ✓ genres: ausente → NaN 3ms
+     ✓ genres: uma string válida → NaN 6ms
+     ✓ tmdbId: ausente (opcional) → NaN 6ms
+     ✓ tmdbId: null (opcional) → NaN 5ms
+     ✓ tmdbId: 1 (mínimo positivo) → NaN 6ms
+     ✓ tmdbId: 0 (não positivo) → NaN 4ms
+     ✓ tmdbId: -1 (negativo) → NaN 4ms
+     ✓ tmdbId: 1.5 (não inteiro) → NaN 4ms
+     ✓ posterUrl: ausente (opcional) → NaN 7ms
+     ✓ posterUrl: null (opcional) → NaN 6ms
+     ✓ posterUrl: URL inválida → NaN 4ms
+     ✓ releaseYear: 1887 (abaixo do mínimo) → NaN 4ms
+     ✓ releaseYear: 1888 (mínimo) → NaN 5ms
+     ✓ releaseYear: ano atual + 5 (máximo) → NaN 6ms
+     ✓ releaseYear: ano atual + 6 (acima do máximo) → NaN 4ms
+     ✓ releaseYear: null (opcional) → NaN 6ms
+     ✓ 401 sem sessão e o status não muda 6ms
+     ✓ 403 para USER comum e o status não muda 9ms
+     ✓ 404 para conteúdo inexistente 8ms
+     ✓ 200 para ADMIN: PENDING → APPROVED persistido 8ms
+     ✓ 400 INVALID_STATUS quando o conteúdo já está APPROVED 7ms
+     ✓ 400 INVALID_STATUS quando o conteúdo já está REJECTED 7ms
+     ✓ 401 sem sessão e o status não muda 6ms
+     ✓ 403 para USER comum e o status não muda 6ms
+     ✓ 404 para conteúdo inexistente 7ms
+     ✓ 200 para ADMIN: PENDING → REJECTED persistido 8ms
+     ✓ 400 INVALID_STATUS quando o conteúdo já está APPROVED 6ms
+     ✓ 400 INVALID_STATUS quando o conteúdo já está REJECTED 6ms
+     ✓ 401 sem sessão e nenhuma avaliação é criada 6ms
+     ✓ 404 para conteúdo inexistente 7ms
+     ✓ 404 para conteúdo PENDING (avaliação só existe para APPROVED) 8ms
+     ✓ 404 para conteúdo REJECTED (avaliação só existe para APPROVED) 6ms
+     ✓ rating: 0 (abaixo do mínimo) → NaN 6ms
+     ✓ rating: 1 (mínimo) → NaN 10ms
+     ✓ rating: 5 (máximo) → NaN 10ms
+     ✓ rating: 6 (acima do máximo) → NaN 6ms
+     ✓ rating: 2.5 (não inteiro) → NaN 6ms
+     ✓ rating: ausente → NaN 6ms
+     ✓ body: ausente (opcional) → NaN 11ms
+     ✓ body: null (opcional) → NaN 9ms
+     ✓ body: 2000 caracteres (máximo) → NaN 12ms
+     ✓ body: 2001 caracteres (acima do máximo) → NaN 9ms
+     ✓ hasSpoiler: true → NaN 8ms
+     ✓ hasSpoiler: não booleano → NaN 6ms
+     ✓ hasSpoiler assume false quando omitido 8ms
+     ✓ 200 público (sem sessão) para conteúdo aprovado sem avaliações 9ms
+     ✓ 404 para conteúdo inexistente 6ms
+     ✓ 404 para conteúdo PENDING (não disponível publicamente) 5ms
+     ✓ 404 para conteúdo REJECTED (não disponível publicamente) 5ms
+     × paginação: página 1 com 10 itens; página 2 com o 11º 25ms
+     × ordena das mais recentes para as mais antigas 14ms
+     ✓ 401 sem sessão e a avaliação permanece 15ms
+     ✓ 404 para conteúdo inexistente 9ms
+     ✓ 404 quando o usuário não tem avaliação neste conteúdo 7ms
+     ✓ 200 remove a própria avaliação do banco 13ms
+     ✓ não remove avaliação de outro usuário (404) e a original permanece 10ms
+     ✓ conteúdo sugerido, aprovado, avaliado e então visível publicamente 21ms
+     ✓ conteúdo rejeitado não aceita avaliações e não aparece publicamente 13ms
+     ✓ conteúdo aprovado não pode mais ser rejeitado nem reaprovado 14ms
+     × o mesmo usuário não avalia o mesmo título duas vezes; outro usuário pode 15ms
+     ✓ após remover a própria avaliação, o usuário pode avaliar novamente 19ms
+     ✓ a listagem reflete a remoção e a nova avaliação 15ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  testes_integracao/gerados/A-v1/fluxo-contrato.test.ts > GET /api/contents/{id}/reviews — listar > paginação: página 1 com 10 itens; página 2 com o 11º
+PrismaClientValidationError: 
+Invalid `prisma.user.create()` invocation in
+/app/testes_integracao/gerados/A-v1/fluxo-contrato.test.ts:125:37
+
+  122 ): Promise<UserId[]> {
+  123   const ids: UserId[] = [];
+  124   for (let i = 0; i < quantidade; i++) {
+→ 125     const extra = await prisma.user.create({
+            data: {
+              email: "semeado0@teste.com",
+              name: "Semeado 0",
+              role: "USER",
+          +   password: String
+            }
+          })
+
+Argument `password` is missing.
+ ❯ wn node_modules/@prisma/client/runtime/library.js:29:1363
+ ❯ $n.handleRequestError node_modules/@prisma/client/runtime/library.js:121:6958
+ ❯ $n.handleAndLogRequestError node_modules/@prisma/client/runtime/library.js:121:6623
+ ❯ $n.request node_modules/@prisma/client/runtime/library.js:121:6307
+ ❯ l node_modules/@prisma/client/runtime/library.js:130:9633
+ ❯ semearAvaliacoes testes_integracao/gerados/A-v1/fluxo-contrato.test.ts:125:19
+    123|   const ids: UserId[] = [];
+    124|   for (let i = 0; i < quantidade; i++) {
+    125|     const extra = await prisma.user.create({
+       |                   ^
+    126|       data: {
+    127|         email: `semeado${i}@teste.com`,
+ ❯ testes_integracao/gerados/A-v1/fluxo-contrato.test.ts:385:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  testes_integracao/gerados/A-v1/fluxo-contrato.test.ts > GET /api/contents/{id}/reviews — listar > ordena das mais recentes para as mais antigas
+PrismaClientValidationError: 
+Invalid `prisma.user.create()` invocation in
+/app/testes_integracao/gerados/A-v1/fluxo-contrato.test.ts:125:37
+
+  122 ): Promise<UserId[]> {
+  123   const ids: UserId[] = [];
+  124   for (let i = 0; i < quantidade; i++) {
+→ 125     const extra = await prisma.user.create({
+            data: {
+              email: "semeado0@teste.com",
+              name: "Semeado 0",
+              role: "USER",
+          +   password: String
+            }
+          })
+
+Argument `password` is missing.
+ ❯ wn node_modules/@prisma/client/runtime/library.js:29:1363
+ ❯ $n.handleRequestError node_modules/@prisma/client/runtime/library.js:121:6958
+ ❯ $n.handleAndLogRequestError node_modules/@prisma/client/runtime/library.js:121:6623
+ ❯ $n.request node_modules/@prisma/client/runtime/library.js:121:6307
+ ❯ l node_modules/@prisma/client/runtime/library.js:130:9633
+ ❯ semearAvaliacoes testes_integracao/gerados/A-v1/fluxo-contrato.test.ts:125:19
+    123|   const ids: UserId[] = [];
+    124|   for (let i = 0; i < quantidade; i++) {
+    125|     const extra = await prisma.user.create({
+       |                   ^
+    126|       data: {
+    127|         email: `semeado${i}@teste.com`,
+ ❯ testes_integracao/gerados/A-v1/fluxo-contrato.test.ts:400:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  testes_integracao/gerados/A-v1/fluxo-contrato.test.ts > fluxo de unicidade e remoção de avaliações > o mesmo usuário não avalia o mesmo título duas vezes; outro usuário pode
+AssertionError: expected 201 not to be 201 // Object.is equality
+ ❯ testes_integracao/gerados/A-v1/fluxo-contrato.test.ts:556:28
+    554|
+    555|     const dup = await avaliarConteudo(c.id, { rating: 5 });
+    556|     expect(dup.status).not.toBe(201);
+       |                            ^
+    557|     expect(dup.corpo.error).toBeDefined();
+    558|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 78 passed (81)
+   Start at  15:40:08
+   Duration  3.62s (transform 1.54s, setup 422ms, import 1.53s, tests 677ms, environment 0ms)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   48.46 |    32.69 |   35.29 |   46.78 |                   
+ app/api/contents  |   43.47 |    33.33 |   33.33 |    40.9 |                   
+  route.ts         |   43.47 |    33.33 |   33.33 |    40.9 | 10-55,87-88       
+ ...s/[id]/approve |     100 |      100 |     100 |     100 |                   
+  route.ts         |     100 |      100 |     100 |     100 |                   
+ ...ts/[id]/reject |     100 |      100 |     100 |     100 |                   
+  route.ts         |     100 |      100 |     100 |     100 |                   
+ ...s/[id]/reviews |   93.54 |      100 |     100 |    92.3 |                   
+  route.ts         |   93.54 |      100 |     100 |    92.3 | 60-61             
+ .../tmdb/[tmdbId] |       0 |        0 |       0 |       0 |                   
+  route.ts         |       0 |        0 |       0 |       0 | 8-23              
+ ...pi/tmdb/search |       0 |        0 |       0 |       0 |                   
+  route.ts         |       0 |        0 |       0 |       0 | 8-23              
+ lib               |       0 |        0 |       0 |       0 |                   
+  tmdb.ts          |       0 |        0 |       0 |       0 | 2-113             
+-------------------|---------|----------|---------|---------|-------------------
+

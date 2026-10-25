@@ -12,3 +12,4 @@ coverage
 docker-compose*.yml
 Dockerfile
 .dockerignore
+testes_integracao

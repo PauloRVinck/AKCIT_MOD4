@@ -1,0 +1,12 @@
+{
+  "run": "C-v1",
+  "prompt": "C-tmdb-falhas-v1",
+  "modelo": "claude-haiku-5-5",
+  "plataforma": "Claude Code CLI (modo -p, --safe-mode, sem ferramentas)",
+  "executadoEm": "2026-10-25T15:35:20.199Z",
+  "duracaoMs": 70448,
+  "tokensEntrada": 4368,
+  "tokensSaida": 19855,
+  "custoUsd": 0.011262300000000001,
+  "sessionId": "2a5ebd42-35e7-4acf-9dc0-c507fd04e7b3"
+}
